@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <style>
+        .button {
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 15px 15px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>
+        </head>
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+attribute vec4 vColor;
+uniform vec2 u_resolution;
+varying vec4 fColor;
+
+
+void
+main()
+{
+    vec2 zeroToOne = vec2(vPosition) / u_resolution;
+ 
+    // convert from 0->1 to 0->2
+    vec2 zeroToTwo = zeroToOne * 2.0;
+ 
+    // convert from 0->2 to -1->+1 (clip space)
+    vec2 clipSpace = zeroToTwo - 1.0;
+    gl_Position = vec4(clipSpace * vec2(1, -1), vPosition[2], 1);
+
+    fColor = vColor;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying vec4 fColor;
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="hw1.js"></script>
+
+<body>
+<div>
+<canvas id="gl-canvas" width="300"" height="300"
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+</div>
+<div>
+<select id = "mymenu" size = "7">
+    <option value = "0">Black</option>
+    <option value = "1">Red</option>
+    <option value = "2">Yellow</option>
+    <option value = "3">Green</option>
+    <option value = "4">Blue</option>
+    <option value = "5">Magenta</option>
+    <option value = "6">Cyan</option>
+</select>
+<button class = "button" id = "Undo">Undo</button>
+<button class = "button" id = "Redo">Redo</button>
+<button class = "button" id = "Brush">Brush</button>
+<button class = "button" id = "Eraser">Eraser</button>
+<br>
+<button class = "button" id = "Rectangle">Rectangle</button>
+<button class = "button" id = "Triangle">Triangle</button>
+<button class = "button" id = "Ellipse">Ellipse</button>
+<select name="FillOption" id="FillOption">
+    <option value="0">Filled</option>
+    <option value="1">Unfilled</option>
+  </select>
+  <br>
+<button class = "button" id = "Copy">Copy</button>
+<button class = "button" id = "Layer1">Layer 1</button>
+<button class = "button" id = "Layer2">Layer 2</button>
+<button class = "button" id = "Layer3">Layer 3</button>
+<button class = "button" id = "Layer4">Layer 4</button>
+Current Layer: <a id="clayer" ></a>
+<button class = "button" id = "Front">Take current layer to front</button>
+<br>
+<button class = "button" id = "Log">Log</button>
+<button class = "button" id = "Save">Save</button>
+<button class = "button" id = "Read">Read</button>
+<button class = "button" type="button" id="btnOpen">Open...</button>
+<input type="file" id="exampleInputFile" accept=".txt,.csv,.xml">
+<textarea id="textbox">Type something here</textarea> <button id="create">Create file</button> 
+<a download="info.txt" id="downloadlink" style="display: none">Download</a>
+<textarea id="exampleTextarea" rows="8"></textarea>
+
+</div>
+
+
+
+</body>
+</html>

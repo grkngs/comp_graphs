@@ -1,0 +1,523 @@
+<html>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute  vec4 vPosition;
+attribute  vec4 vColor;
+varying vec4 fColor;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+
+void main() 
+{
+    fColor = vColor;
+    gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying  vec4 fColor;
+
+void main() 
+{ 
+    gl_FragColor = fColor;
+} 
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="hw2.js"></script>
+<div>
+    <canvas id="gl-canvas" width="800"" height="800"
+    Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+    </div>
+
+
+<div id="slider1">
+    body angle x -180 <input id="slide" type="range"
+     min="-180" max="180" step="10" value="0"
+      />
+     180
+    </div><br/>
+    
+    <div id="slider2">
+    body angle y -180 <input id="slide" type="range"
+     min="-180" max="180" step="10" value="0"
+      />
+     180
+    </div><br/>
+    
+    <div id="slider3">
+    body angle z -180 <input id="slide" type="range"
+     min="-180" max="180" step="10" value="0"
+      />
+     180
+    </div><br/>
+    <div id="spoiler" style="display:none">
+    
+        <div id="slider4">
+            Front Feet1 Upper angle x -180 <input id="slide" type="range"
+             min="-180" max="180" step="10" value="0"
+              />
+             180
+            </div><br/>
+            
+            <div id="slider5">
+                Front Feet1 Upper angle y -180 <input id="slide" type="range"
+             min="-180" max="180" step="10" value="0"
+              />
+             180
+            </div><br/>
+            
+            <div id="slider6">
+                Front Feet1 Upper angle z -180 <input id="slide" type="range"
+             min="-180" max="180" step="10" value="0"
+              />
+             180
+            </div><br/>
+            
+        
+            <div id="slider7">
+                Front Feet1 Lower angle x -180 <input id="slide" type="range"
+                 min="-180" max="180" step="10" value="0"
+                  />
+                 180
+                </div><br/>
+                
+                <div id="slider8">
+                    Front Feet1 Lower angle y -180 <input id="slide" type="range"
+                 min="-180" max="180" step="10" value="0"
+                  />
+                 180
+                </div><br/>
+                
+                <div id="slider9">
+                    Front Feet1 Lower angle z -180 <input id="slide" type="range"
+                 min="-180" max="180" step="10" value="0"
+                  />
+                 180
+                </div><br/>
+        
+        </div>
+        
+        <div id="spoiler2" style="display:none">
+        
+            <div id="slider10">
+                Front Feet2 Upper angle x -180 <input id="slide" type="range"
+                 min="-180" max="180" step="10" value="0"
+                  />
+                 180
+                </div><br/>
+                
+                <div id="slider11">
+                    Front Feet2 Upper angle y -180 <input id="slide" type="range"
+                 min="-180" max="180" step="10" value="0"
+                  />
+                 180
+                </div><br/>
+                
+                <div id="slider12">
+                    Front Feet2 Upper angle z -180 <input id="slide" type="range"
+                 min="-180" max="180" step="10" value="0"
+                  />
+                 180
+                </div><br/>
+                
+            
+                <div id="slider13">
+                    Front Feet2 Lower angle x -180 <input id="slide" type="range"
+                     min="-180" max="180" step="10" value="0"
+                      />
+                     180
+                    </div><br/>
+                    
+                    <div id="slider14">
+                        Front Feet2 Lower angle y -180 <input id="slide" type="range"
+                     min="-180" max="180" step="10" value="0"
+                      />
+                     180
+                    </div><br/>
+                    
+                    <div id="slider15">
+                        Front Feet2 Lower angle z -180 <input id="slide" type="range"
+                     min="-180" max="180" step="10" value="0"
+                      />
+                     180
+                    </div><br/>
+    
+            
+            </div>
+            
+            
+            <div id="spoiler3" style="display:none">
+        
+                <div id="slider16">
+                    Back Feet1 Upper angle x -180 <input id="slide" type="range"
+                     min="-180" max="180" step="10" value="0"
+                      />
+                     180
+                    </div><br/>
+                    
+                    <div id="slider17">
+                        Back Feet1 Upper angle y -180 <input id="slide" type="range"
+                     min="-180" max="180" step="10" value="0"
+                      />
+                     180
+                    </div><br/>
+                    
+                    <div id="slider18">
+                        Back Feet1 Upper angle z -180 <input id="slide" type="range"
+                     min="-180" max="180" step="10" value="0"
+                      />
+                     180
+                    </div><br/>
+                    
+                
+                    <div id="slider19">
+                        Back Feet1 Lower angle x -180 <input id="slide" type="range"
+                         min="-180" max="180" step="10" value="0"
+                          />
+                         180
+                        </div><br/>
+                        
+                        <div id="slider20">
+                            Back Feet1 Lower angle y -180 <input id="slide" type="range"
+                         min="-180" max="180" step="10" value="0"
+                          />
+                         180
+                        </div><br/>
+                        
+                        <div id="slider21">
+                            Back Feet1 Lower angle z -180 <input id="slide" type="range"
+                         min="-180" max="180" step="10" value="0"
+                          />
+                         180
+                        </div><br/>
+                
+                </div>
+                
+                
+                <div id="spoiler4" style="display:none">
+        
+                    <div id="slider22">
+                        Back Feet2 Upper angle x -180 <input id="slide" type="range"
+                         min="-180" max="180" step="10" value="0"
+                          />
+                         180
+                        </div><br/>
+                        
+                        <div id="slider23">
+                            Back Feet2 Upper angle y -180 <input id="slide" type="range"
+                         min="-180" max="180" step="10" value="0"
+                          />
+                         180
+                        </div><br/>
+                        
+                        <div id="slider24">
+                            Back Feet2 Upper angle z -180 <input id="slide" type="range"
+                         min="-180" max="180" step="10" value="0"
+                          />
+                         180
+                        </div><br/>
+                        
+                    
+                        <div id="slider25">
+                            Back Feet2 Lower angle x -180 <input id="slide" type="range"
+                             min="-180" max="180" step="10" value="0"
+                              />
+                             180
+                            </div><br/>
+                            
+                            <div id="slider26">
+                                Back Feet2 Lower angle y -180 <input id="slide" type="range"
+                             min="-180" max="180" step="10" value="0"
+                              />
+                             180
+                            </div><br/>
+                            
+                            <div id="slider27">
+                                Back Feet2 Lower angle z -180 <input id="slide" type="range"
+                             min="-180" max="180" step="10" value="0"
+                              />
+                             180
+                            </div><br/>
+                    
+                    </div>
+                    <div id="spoiler5" style="display:none">
+        
+                        <div id="slider28">
+                            Upper Body angle x -180 <input id="slide" type="range"
+                             min="-180" max="180" step="10" value="0"
+                              />
+                             180
+                            </div><br/>
+                            
+                            <div id="slider29">
+                                Upper Body Upper angle y -180 <input id="slide" type="range"
+                             min="-180" max="180" step="10" value="0"
+                              />
+                             180
+                            </div><br/>
+                            
+                            <div id="slider30">
+                                Upper Body Upper angle z -180 <input id="slide" type="range"
+                             min="-180" max="180" step="10" value="0"
+                              />
+                             180
+                            </div><br/>
+                            
+                        </div>
+                        <div id="spoiler6" style="display:none">
+        
+                            <div id="slider31">
+                                Upper Arm angle x -180 <input id="slide" type="range"
+                                 min="-180" max="180" step="10" value="0"
+                                  />
+                                 180
+                                </div><br/>
+                                
+                                <div id="slider32">
+                                    Upper Arm angle y -180 <input id="slide" type="range"
+                                 min="-180" max="180" step="10" value="0"
+                                  />
+                                 180
+                                </div><br/>
+                                
+                                <div id="slider33">
+                                    Upper Arm angle z -180 <input id="slide" type="range"
+                                 min="-180" max="180" step="10" value="0"
+                                  />
+                                 180
+                                </div><br/>
+
+                                <div id="slider34">
+                                    Lower Arm angle x -180 <input id="slide" type="range"
+                                     min="-180" max="180" step="10" value="0"
+                                      />
+                                     180
+                                    </div><br/>
+                                    
+                                    <div id="slider35">
+                                        Lower Arm angle y -180 <input id="slide" type="range"
+                                     min="-180" max="180" step="10" value="0"
+                                      />
+                                     180
+                                    </div><br/>
+                                    
+                                    <div id="slider36">
+                                        Lower Arm angle z -180 <input id="slide" type="range"
+                                     min="-180" max="180" step="10" value="0"
+                                      />
+                                     180
+                                    </div><br/>
+                                
+                            </div>
+                            <div id="spoiler7" style="display:none">
+        
+                                <div id="slider37">
+                                    Upper Arm angle x -180 <input id="slide" type="range"
+                                     min="-180" max="180" step="10" value="0"
+                                      />
+                                     180
+                                    </div><br/>
+                                    
+                                    <div id="slider38">
+                                        Upper Arm angle y -180 <input id="slide" type="range"
+                                     min="-180" max="180" step="10" value="0"
+                                      />
+                                     180
+                                    </div><br/>
+                                    
+                                    <div id="slider39">
+                                        Upper Arm angle z -180 <input id="slide" type="range"
+                                     min="-180" max="180" step="10" value="0"
+                                      />
+                                     180
+                                    </div><br/>
+    
+                                    <div id="slider40">
+                                        Lower Arm angle x -180 <input id="slide" type="range"
+                                         min="-180" max="180" step="10" value="0"
+                                          />
+                                         180
+                                        </div><br/>
+                                        
+                                        <div id="slider41">
+                                            Lower Arm angle y -180 <input id="slide" type="range"
+                                         min="-180" max="180" step="10" value="0"
+                                          />
+                                         180
+                                        </div><br/>
+                                        
+                                        <div id="slider42">
+                                            Lower Arm angle z -180 <input id="slide" type="range"
+                                         min="-180" max="180" step="10" value="0"
+                                          />
+                                         180
+                                        </div><br/>
+                                    
+                                </div>
+                                <div id="spoiler8" style="display:none">
+        
+                                    <div id="slider43">
+                                        Right Hand angle x -180 <input id="slide" type="range"
+                                         min="-180" max="180" step="10" value="0"
+                                          />
+                                         180
+                                        </div><br/>
+                                        
+                                        <div id="slider44">
+                                            Right Hand angle y -180 <input id="slide" type="range"
+                                         min="-180" max="180" step="10" value="0"
+                                          />
+                                         180
+                                        </div><br/>
+                                        
+                                        <div id="slider45">
+                                            Right Hand angle z -180 <input id="slide" type="range"
+                                         min="-180" max="180" step="10" value="0"
+                                          />
+                                         180
+                                        </div><br/>
+        
+                                        <div id="slider46">
+                                            Left Hand angle x -180 <input id="slide" type="range"
+                                             min="-180" max="180" step="10" value="0"
+                                              />
+                                             180
+                                            </div><br/>
+                                            
+                                            <div id="slider47">
+                                                Left Hand angle y -180 <input id="slide" type="range"
+                                             min="-180" max="180" step="10" value="0"
+                                              />
+                                             180
+                                            </div><br/>
+                                            
+                                            <div id="slider48">
+                                                Left Hand angle z -180 <input id="slide" type="range"
+                                             min="-180" max="180" step="10" value="0"
+                                              />
+                                             180
+                                            </div><br/>
+                                        
+                                    </div>
+                                    <div id="spoiler9" style="display:none">
+        
+                                        <div id="slider49">
+                                            Head angle x -180 <input id="slide" type="range"
+                                             min="-180" max="180" step="10" value="0"
+                                              />
+                                             180
+                                            </div><br/>
+                                            
+                                            <div id="slider50">
+                                                Head angle y -180 <input id="slide" type="range"
+                                             min="-180" max="180" step="10" value="0"
+                                              />
+                                             180
+                                            </div><br/>
+                                            
+                                            <div id="slider51">
+                                                Head angle z -180 <input id="slide" type="range"
+                                             min="-180" max="180" step="10" value="0"
+                                              />
+                                             180
+                                            </div><br/>
+                                        </div>
+                                        <div id="spoiler10" style="display:none">
+        
+                                            <div id="shrink">
+                                                Shrink <input id="button" type="button"
+                                                  value="-"
+                                                  />
+                                                </div><br/>
+                                                
+                                                <div id="enlarge">
+                                                    Enlarge <input id="button" type="button"
+                                                 value="+"
+                                                  />
+                                                </div><br/>
+                                            </div>
+                                            <div id="spoiler11" style="display:none">
+        
+                                                <div id="decrease">
+                                                    Decrease <input id="button" type="button"
+                                                      value="-"
+                                                      />
+                                                    </div><br/>
+                                                    
+                                                    <div id="increase">
+                                                        Increase <input id="button" type="button"
+                                                     value="+"
+                                                      />
+                                                    </div><br/>
+                                                </div>
+                                                
+                    <button title="Front Feet 1 Rotation" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}">Front Feet 1 Rotation</button>
+                    <button title="Front Feet 2 Rotation" type="button" onclick="if(document.getElementById('spoiler2') .style.display=='none') {document.getElementById('spoiler2') .style.display=''}else{document.getElementById('spoiler2') .style.display='none'}">Front Feet 2 Rotation</button>
+                    <button title="Back Feet 1 Rotation" type="button" onclick="if(document.getElementById('spoiler3') .style.display=='none') {document.getElementById('spoiler3') .style.display=''}else{document.getElementById('spoiler3') .style.display='none'}">Back Feet 1 Rotation</button>
+            
+                    <button title="Back Feet 2 Rotation" type="button" onclick="if(document.getElementById('spoiler4') .style.display=='none') {document.getElementById('spoiler4') .style.display=''}else{document.getElementById('spoiler4') .style.display='none'}">Back Feet 2 Rotation</button>
+                    <br/>
+                    <br/>
+                    <button title="Upper Body Rotation" type="button" onclick="if(document.getElementById('spoiler5') .style.display=='none') {document.getElementById('spoiler5') .style.display=''}else{document.getElementById('spoiler5') .style.display='none'}">Upper Body Rotation</button>
+                    <br/>
+                    <br/>
+                    <button title="Right Arm Rotation" type="button" onclick="if(document.getElementById('spoiler6') .style.display=='none') {document.getElementById('spoiler6') .style.display=''}else{document.getElementById('spoiler6') .style.display='none'}">Right Arm Rotation</button>
+                    <button title="Left Arm Rotation" type="button" onclick="if(document.getElementById('spoiler7') .style.display=='none') {document.getElementById('spoiler7') .style.display=''}else{document.getElementById('spoiler7') .style.display='none'}">Left Arm Rotation</button>
+                    <button title="Hand Rotation" type="button" onclick="if(document.getElementById('spoiler8') .style.display=='none') {document.getElementById('spoiler8') .style.display=''}else{document.getElementById('spoiler8') .style.display='none'}">Hand Rotation</button>
+                    <br/>
+                    <br/>
+                    <button title="Head" type="button" onclick="if(document.getElementById('spoiler9') .style.display=='none') {document.getElementById('spoiler9') .style.display=''}else{document.getElementById('spoiler9') .style.display='none'}">Head Rotation</button>
+                    <br/>
+                    <br/>
+                    <button title="Resize Model" type="button" onclick="if(document.getElementById('spoiler10') .style.display=='none') {document.getElementById('spoiler10') .style.display=''}else{document.getElementById('spoiler10') .style.display='none'}">Resize Model</button>
+                    <button title="Set Animation Speed" type="button" onclick="if(document.getElementById('spoiler11') .style.display=='none') {document.getElementById('spoiler11') .style.display=''}else{document.getElementById('spoiler11') .style.display='none'}">Set Animation Speed</button>
+                    <br/>
+                    <br/>
+                    <div id="clap">
+                         <input id="button" type="button"
+                          value="Clap Hands Animation"
+                          />
+                        </div><br/>
+                        <br/>
+                        <div id="walk">
+                             <input id="button" type="button"
+                              value="Walk Animation"
+                              />
+                            </div><br/>
+                            <div id="Save">
+                                <input id="button" type="button"
+                                 value="Save Frame"
+                                 />
+                               </div><br/>
+                               <div id="Load">
+                                <input id="button" type="button"
+                                 value="Load Frame"
+                                 />
+                               </div><br/>
+
+
+
+<button class = "button" id = "Save">Save</button>
+<button class = "button" id = "Read">Read</button>
+<button class = "button" type="button" id="btnOpen">Open...</button>
+<input type="file" id="exampleInputFile" accept=".txt,.csv,.xml">
+<textarea id="textbox">Type something here</textarea> <button id="create">Create file</button> 
+<a download="info.txt" id="downloadlink" style="display: none">Download</a>
+<textarea id="exampleTextarea" rows="8"></textarea>
+                
+                
+                
+                
+                
+                        
+
+
+</html>
